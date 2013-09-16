@@ -95,6 +95,7 @@ public class TokenStream
                 if (c == 'u') {
                     identifierStart = true;
                     stringBufferTop = 0;
+                    isUnicodeEscapeStart = true;
                 } else {
                     identifierStart = false;
                     ungetChar(c);
