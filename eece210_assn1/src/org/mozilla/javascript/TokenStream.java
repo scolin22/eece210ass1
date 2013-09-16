@@ -31,7 +31,7 @@ public class TokenStream
     {
         this.lineno = lineno;
         if (sourceReader != null) {
-        	this.sourceReader = null;
+        	this.sourceReader = sourceReader;
             this.sourceBuffer = new char[512];
             this.sourceEnd = 0;
         } else {
