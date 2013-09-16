@@ -668,7 +668,7 @@ public class TokenStream
          for (end=start; end < len; end++) {
              char c = s.charAt(end);
              int newDigit;
-             if ('0' <= c && c < digitMax)
+             if ('0' <= c && c <= digitMax)
                  newDigit = c - '0';
              else
                  break;
