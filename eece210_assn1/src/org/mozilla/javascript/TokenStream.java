@@ -90,11 +90,13 @@ public class TokenStream
             // watch out for starting with a <backslash>
             boolean identifierStart;
             boolean isUnicodeEscapeStart = false;
+            boolean isUnicode = false;
             if (c == '\\') {
                 c = getChar();
                 if (c == 'u') {
                     identifierStart = true;
                     stringBufferTop = 0;
+                    isUnicode = true;
                 } else {
                     identifierStart = false;
                     ungetChar(c);
@@ -153,6 +155,11 @@ public class TokenStream
                 ungetChar(c);
 
                 String str = getStringFromBuffer();
+                if (isUnicode) {
+                    str = "\\u"+str;
+                    char ch = (char) Integer.parseInt( str.substring(2), 16 );
+                    str = String.valueOf(ch);
+                }
                 this.string = (String)allStrings.intern(str);
                 return Token.NAME;
             }
