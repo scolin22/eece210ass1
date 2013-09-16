@@ -339,7 +339,7 @@ public class TokenStream
                 } else if (matchChar('-')) {
                     c = Token.DEC;
                 } else {
-                    c = Token.ADD;
+                    c = Token.SUB;
                 }
                 return c;
 
